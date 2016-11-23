@@ -151,15 +151,15 @@ class BootstrapFormHelper extends FormHelper {
         if ($this->horizontal) {
             $options['templateVars'] += [
                 'h_formGroup_start' => '<div class="'.$this->_getColClass('input').'">',
-                'h_formGroup_end'   => '</div>',
-                'h_checkboxContainer_start' => '<div class="form-group"><div class="'.$this->_getColClass('label', true)
-                .' '.$this->_getColClass('input').'">',
-                'h_checkboxContainer_end' => '</div></div>',
-                'h_radioContainer_start' => '<div class="form-group"><div class="'.$this->_getColClass('label', true)
-                .' '.$this->_getColClass('input').'">',
-                'h_radioContainer_end' => '</div></div>',
+                'h_formGroup_end'   => '</div> ',
+                'h_checkboxContainer_start' => '<div class="form-group"> <div class="'.$this->_getColClass('label', true)
+                .' '.$this->_getColClass('input').'"> ',
+                'h_checkboxContainer_end' => '</div></div> ',
+                'h_radioContainer_start' => '<div class="form-group"> <div class="'.$this->_getColClass('label', true)
+                .' '.$this->_getColClass('input').'"> ',
+                'h_radioContainer_end' => '</div></div> ',
                 'h_submitContainer_start' => '<div class="'.$this->_getColClass('label', true).' '.$this->_getColClass('input').'">',
-                'h_submitContainer_end' => '</div>',
+                'h_submitContainer_end' => '</div> ',
                 'h_labelClass' => ' '.$this->_getColClass('label'),
                 'h_errorClass' => ' '.$this->_getColClass('error')
             ];
