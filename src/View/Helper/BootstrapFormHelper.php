@@ -62,7 +62,7 @@ class BootstrapFormHelper extends FormHelper {
             'inputContainer' => '<div class="form-group {{type}}{{required}}">{{content}}</div> ',
             'inputContainerError' => '<div class="form-group has-error {{type}}{{required}}">{{content}}{{error}}</div> ',
             'label' => '<label class="{{s_labelClass}}{{h_labelClass}}{{attrs.class}}" {{attrs}}>{{text}}</label> ',
-            'nestingLabel' => '{{hidden}}<label{{attrs}}>{{input}}{{text}}</label> ',
+            'nestingLabel' => '{{hidden}} <label{{attrs}}>{{input}}{{text}}</label> ',
             'legend' => '<legend>{{text}}</legend> ',
             'option' => '<option value="{{value}}"{{attrs}}>{{text}}</option> ',
             'optgroup' => '<optgroup label="{{label}}"{{attrs}}>{{content}}</optgroup> ',
@@ -322,17 +322,19 @@ class BootstrapFormHelper extends FormHelper {
         $inline = $options['inline'];
         unset ($options['inline']) ;
 
-        if ($options['type'] === 'radio') {
+	if (empty($options['templates'])) {
             $options['templates'] = [] ;
+	}
+	$options['templates']['label'] = $this->templates('label');
+        if ($options['type'] === 'radio') {
             if ($inline) {
                 $options['templates'] = [
-                    'label' => $this->templates('label'),
-                    'radioWrapper' => '{{label}}',
-                    'nestingLabel' => '{{hidden}}<label{{attrs}} class="radio-inline">{{input}}{{text}}</label>'
+                    'radioWrapper' => '{{label}} ',
+                    'nestingLabel' => '{{hidden}} <label{{attrs}} class="radio-inline">{{input}} {{text}}</label> '
                 ] ;
             }
             if ($this->horizontal) {
-                $options['templates']['radioContainer'] = '<div class="form-group">{{content}}</div>';
+                $options['templates']['radioContainer'] = '<div class="form-group">{{content}}</div> ';
             }
             if (empty($options['templates'])) {
                 unset($options['templates']);
