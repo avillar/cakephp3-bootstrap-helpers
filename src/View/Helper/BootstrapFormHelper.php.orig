@@ -327,8 +327,9 @@ class BootstrapFormHelper extends FormHelper {
         $inline = $options['inline'];
         unset ($options['inline']);
 
+<<<<<<< HEAD
 	if (empty($options['templates'])) {
-            $options['templates'] = [];
+            $options['templates'] = [] ;
 	}
 	$options['templates']['label'] = $this->templates('label');
         if ($options['type'] === 'radio') {
@@ -336,7 +337,17 @@ class BootstrapFormHelper extends FormHelper {
                 $options['templates'] = [
                     'radioWrapper' => '{{label}} ',
                     'nestingLabel' => '{{hidden}} <label{{attrs}} class="radio-inline">{{input}} {{text}}</label> '
+                ] ;
+=======
+        if ($options['type'] === 'radio') {
+            $options['templates'] = [];
+            if ($inline) {
+                $options['templates'] = [
+                    'label' => $this->templates('label'),
+                    'radioWrapper' => '{{label}}',
+                    'nestingLabel' => '{{hidden}}<label{{attrs}} class="radio-inline">{{input}}{{text}}</label>'
                 ];
+>>>>>>> 76a417e5e995fb38e8ce739d4cdf8e2cc2fdc68e
             }
             if ($this->horizontal) {
                 $options['templates']['radioContainer'] = '<div class="form-group">{{content}}</div> ';
